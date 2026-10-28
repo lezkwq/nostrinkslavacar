@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header, Wordmark } from "@/components/site/Header";
 import { BUSINESS, MAPS_URL, ROUTE_URL, serviceMessage, whatsappUrl } from "@/lib/business";
-import heroDesktop from "@/assets/hero-desktop.jpg.asset.json";
-import heroMobile from "@/assets/hero-mobile.jpg.asset.json";
-import farol from "@/assets/farol.jpg.asset.json";
-import suv from "@/assets/suv-preto.jpg.asset.json";
-import coupe from "@/assets/coupe-preto.jpg.asset.json";
-import mini from "@/assets/mini.jpg.asset.json";
-import azul from "@/assets/carro-azul.jpg.asset.json";
-import moto from "@/assets/moto.jpg.asset.json";
+import heroDesktop from "@/assets/hero-desktop.png";
+import heroMobile from "@/assets/hero-mobile.png";
+import farol from "@/assets/farol.png";
+import suv from "@/assets/suv-preto.png";
+import coupe from "@/assets/coupe-preto.png";
+import mini from "@/assets/mini.png";
+import azul from "@/assets/carro-azul.png";
+import moto from "@/assets/moto.png";
 
 const TITLE = "Nostrink’s Lavacar — Lavação e estética automotiva em Porto Belo, SC";
 const DESC =
@@ -86,8 +86,8 @@ function Index() {
         {/* HERO */}
         <section aria-label="Apresentação" className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-navy md:h-[92vh]">
           <picture>
-            <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
-            <img src={heroMobile.url} alt="Mercedes-Benz preta estacionada em estrada litorânea, com o mar ao fundo" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[42%_40%] md:object-[50%_15%]" />
+            <source media="(min-width: 768px)" srcSet={heroDesktop} />
+            <img src={heroMobile} alt="Mercedes-Benz preta estacionada em estrada litorânea, com o mar ao fundo" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[42%_40%] md:object-[50%_15%]" />
           </picture>
           <div className="absolute inset-0 bg-hero-shade" aria-hidden />
           <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[10vh]">
@@ -140,7 +140,7 @@ function Index() {
               </ol>
             </div>
             <figure className="lg:sticky lg:top-24 lg:self-start">
-              <img src={coupe.url} alt="Mercedes-Benz coupé preta com a pintura brilhando após cuidado na Nostrink’s" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+              <img src={coupe} alt="Mercedes-Benz coupé preta com a pintura brilhando após cuidado na Nostrink’s" loading="lazy" className="aspect-[4/5] w-full object-cover" />
               <figcaption className="mt-3 text-xs text-muted-foreground">Foto real · Instagram da Nostrink’s</figcaption>
             </figure>
           </div>
@@ -158,11 +158,11 @@ function Index() {
               <p className="max-w-sm text-graphite md:col-span-4 md:col-start-9">Conheça alguns dos veículos e serviços apresentados pela Nostrink’s.</p>
             </div>
             <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5">
-              <Photo src={farol.url} alt="Farol antes e depois da restauração" caption="Farol — antes e depois" className="md:col-span-5 md:row-span-2" ratio="aspect-[3/4]" />
-              <Photo src={suv.url} alt="SUV preto limpo no pátio da Nostrink’s" caption="SUV preto" className="md:col-span-7" ratio="aspect-[16/11]" pos="object-[50%_55%]" />
-              <Photo src={azul.url} alt="Carro azul após lavação" caption="Hatch azul" className="md:col-span-4" ratio="aspect-square" />
-              <Photo src={mini.url} alt="Mini preto com acabamento brilhante" caption="Mini" className="md:col-span-3" ratio="aspect-[3/4] md:aspect-auto md:h-full" />
-              <Photo src={moto.url} alt="Motocicleta vermelha atendida na Nostrink’s" caption="Motocicletas também" className="md:col-span-12" ratio="aspect-[4/3] md:aspect-[21/8]" pos="object-[50%_45%]" />
+              <Photo src={farol} alt="Farol antes e depois da restauração" caption="Farol — antes e depois" className="md:col-span-5 md:row-span-2" ratio="aspect-[3/4]" />
+              <Photo src={suv} alt="SUV preto limpo no pátio da Nostrink’s" caption="SUV preto" className="md:col-span-7" ratio="aspect-[16/11]" pos="object-[50%_55%]" />
+              <Photo src={azul} alt="Carro azul após lavação" caption="Hatch azul" className="md:col-span-4" ratio="aspect-square" />
+              <Photo src={mini} alt="Mini preto com acabamento brilhante" caption="Mini" className="md:col-span-3" ratio="aspect-[3/4] md:aspect-auto md:h-full" />
+              <Photo src={moto} alt="Motocicleta vermelha atendida na Nostrink’s" caption="Motocicletas também" className="md:col-span-12" ratio="aspect-[4/3] md:aspect-[21/8]" pos="object-[50%_45%]" />
             </div>
             <div className="mt-12">
               <PillLink href={BUSINESS.instagram} variant="navy">Ver mais trabalhos no Instagram</PillLink>
