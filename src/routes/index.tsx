@@ -90,16 +90,16 @@ function Index() {
             <img src={heroMobile.url} alt="Mercedes-Benz preta estacionada em estrada litorânea, com o mar ao fundo" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[42%_40%] md:object-[50%_15%]" />
           </picture>
           <div className="absolute inset-0 bg-hero-shade" aria-hidden />
-          <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[11vh]">
+          <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[10vh]">
             <h1 className="text-display animate-rise">
               Seu carro merece
               <br />
               um cuidado à altura.
             </h1>
-            <p className="animate-rise mt-5 max-w-md text-base opacity-95 [animation-delay:120ms] md:text-lg">
+            <p className="animate-rise mt-4 max-w-md text-base opacity-95 [animation-delay:120ms] md:text-lg">
               Lavação, estética automotiva e serviços para cuidar do seu veículo em Porto Belo.
             </p>
-            <div className="animate-rise mt-8 flex flex-col gap-3 [animation-delay:220ms] sm:flex-row">
+            <div className="animate-rise mt-6 flex flex-col gap-3 [animation-delay:220ms] sm:flex-row">
               <PillLink href={whatsappUrl()}>Agendar pelo WhatsApp</PillLink>
               <PillLink href="#servicos" variant="light" external={false}>Conhecer os serviços</PillLink>
             </div>
