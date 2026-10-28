@@ -87,10 +87,10 @@ function Index() {
         <section aria-label="Apresentação" className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-navy md:h-[92vh]">
           <picture>
             <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
-            <img src={heroMobile.url} alt="Mercedes-Benz preta estacionada em estrada litorânea, com o mar ao fundo" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[50%_70%] md:object-[50%_60%]" />
+            <img src={heroMobile.url} alt="Mercedes-Benz preta estacionada em estrada litorânea, com o mar ao fundo" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[42%_40%] md:object-[50%_15%]" />
           </picture>
           <div className="absolute inset-0 bg-hero-shade" aria-hidden />
-          <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[13vh]">
+          <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[11vh]">
             <h1 className="text-display animate-rise">
               Seu carro merece
               <br />
