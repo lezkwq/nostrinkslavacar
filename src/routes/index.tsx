@@ -235,7 +235,7 @@ function Index() {
                 className="aspect-[4/5] w-full object-cover"
               />
               <figcaption className="mt-3 text-xs text-muted-foreground">
-                Pintura na oficina da Nostrink’s. Imagem refeita a partir do registro enviado.
+                Pintura na oficina da Nostrink’s.
               </figcaption>
             </figure>
           </div>
@@ -251,9 +251,7 @@ function Index() {
                 Do processo ao acabamento.
               </h2>
               <p className="max-w-sm text-graphite md:col-span-4 md:col-start-9">
-                Pintura em andamento, detalhes de freios e a comparação no vidro aparecem primeiro.
-                Depois, os carros no pátio de Porto Belo. Imagens refeitas a partir dos registros
-                enviados.
+                Pintura, manutenção e acabamento na Nostrink’s Lavacar, em Porto Belo.
               </p>
             </div>
             <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -302,8 +300,8 @@ function Index() {
             Duas rodas têm espaço próprio na Nostrink’s.
           </h2>
           <p className="mt-6 max-w-xl text-graphite">
-            Lavagem de moto também faz parte dos nossos serviços. Aqui, os registros da Kawasaki e
-            da Honda ficam juntos, em uma galeria só para motos.
+            Da Kawasaki à Honda, sua moto também tem lugar na Nostrink’s. Consulte o serviço de
+            lavagem em Porto Belo.
           </p>
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             <Photo
@@ -322,9 +320,6 @@ function Index() {
               caption="Honda na orla"
             />
           </div>
-          <p className="mt-4 text-xs text-muted-foreground">
-            Imagens refeitas a partir dos registros enviados.
-          </p>
           <div className="mt-8">
             <PillLink href={whatsappUrl(serviceMessage("lavagem de moto"))}>
               Consultar lavagem da minha moto
