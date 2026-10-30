@@ -223,7 +223,7 @@ function Index() {
                         ))}
                       </ul>
                       {s.name === "Lavação e estética" && (
-                        <figure className="service-photo mt-6">
+                        <figure className="service-photo mt-6 lg:hidden">
                           <div className="overflow-hidden">
                             <img
                               src={polimento}
@@ -252,6 +252,22 @@ function Index() {
                 ))}
               </ol>
             </div>
+            <figure className="services-polishing-photo service-photo hidden lg:block">
+              <div className="overflow-hidden">
+                <img
+                  src={polimento}
+                  alt="Polimento em execução com politriz na pintura de um carro preto"
+                  width={1448}
+                  height={1086}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-auto w-full"
+                />
+              </div>
+              <figcaption className="mt-2 text-xs text-muted-foreground">
+                Polimento automotivo em execução.
+              </figcaption>
+            </figure>
             <figure className="services-main-photo service-photo lg:sticky lg:top-24 lg:self-start">
               <div className="overflow-hidden">
                 <img
