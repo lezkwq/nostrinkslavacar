@@ -13,6 +13,7 @@ import peugeot from "@/assets/peugeot.webp";
 import volvo from "@/assets/volvo.webp";
 import heroDesktop from "@/assets/hero-desktop-volvo.webp";
 import polimento from "@/assets/polimento.webp";
+import fachada from "@/assets/fachada.webp";
 
 const TITLE = "Nostrink’s Lavacar | Centro automotivo completo em Porto Belo";
 const DESC =
@@ -168,6 +169,12 @@ function Index() {
               Centro automotivo completo na Avenida Governador Celso Ramos. Estética, pintura,
               estofados, elétrica e vidros no mesmo endereço.
             </p>
+            <blockquote className="mt-5 max-w-xl text-sm leading-relaxed opacity-90">
+              <p>
+                “Eis que tenho posto diante de ti uma porta aberta, a qual ninguém pode fechar.”
+              </p>
+              <cite className="mt-1 block text-xs not-italic">Apocalipse 3:8</cite>
+            </blockquote>
             <div className="animate-rise mt-6 flex flex-col gap-3 [animation-delay:220ms] sm:flex-row">
               <PillLink href={whatsappUrl()}>Consultar meu serviço</PillLink>
               <PillLink href="#servicos" variant="light" external={false}>
@@ -286,6 +293,67 @@ function Index() {
           </div>
         </section>
 
+        <section id="informacoes" className="mx-auto max-w-7xl px-6 pb-24 md:px-10 md:pb-32">
+          <div className="grid gap-14 border-t border-border pt-12 md:grid-cols-2 md:gap-20">
+            <div>
+              <h2 className="font-display text-3xl font-bold text-navy">Quanto custa</h2>
+              <dl className="mt-8 divide-y divide-border">
+                <div className="pb-6">
+                  <dt className="text-lg text-graphite">Lavagem rápida (ducha)</dt>
+                  <dd className="mt-2 font-display text-2xl font-semibold text-navy">
+                    A partir de R$ 10
+                  </dd>
+                  <dd className="mt-1 text-sm text-muted-foreground">Varia conforme avaliação.</dd>
+                </div>
+                <div className="py-6">
+                  <dt className="text-lg text-graphite">Lavagem completa</dt>
+                  <dd className="mt-2 font-display text-2xl font-semibold text-navy">
+                    A partir de R$ 80
+                  </dd>
+                </div>
+                <div className="py-6">
+                  <dt className="text-lg text-graphite">Detalhada / polimento</dt>
+                  <dd className="mt-2 font-display text-2xl font-semibold text-navy">
+                    A partir de R$ 300
+                  </dd>
+                </div>
+              </dl>
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+                Valor final definido na avaliação, conforme o veículo e o estado da sujeira.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-display text-3xl font-bold text-navy">Horário de atendimento</h2>
+              {/* CONFIRMAR COM O DONO: ordem de chegada ou hora marcada? */}
+              <p className="mt-8 leading-relaxed text-graphite">
+                Segunda a sábado: 7h às 12h e 13h às 18h.
+              </p>
+              <p className="mt-3 leading-relaxed text-graphite">
+                Domingo:{" "}
+                <a
+                  href={MAPS_URL}
+                  {...ext}
+                  className="underline decoration-brand decoration-2 underline-offset-4"
+                >
+                  Funcionamento variável, confira o status no Google antes de vir.
+                </a>
+              </p>
+              <div className="mt-8 border-t border-border pt-6">
+                <h3 className="text-2xl font-bold text-navy">Garantia</h3>
+                <p className="mt-3 leading-relaxed text-graphite">
+                  Garantia de 6 meses a 1 ano, conforme o serviço realizado.
+                </p>
+              </div>
+              <div className="mt-8 border-t border-border pt-6">
+                <h3 className="text-2xl font-bold text-navy">Forma de pagamento</h3>
+                <p className="mt-3 leading-relaxed text-graphite">
+                  Pix, cartão e boleto, com opção de parcelamento.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* TRABALHOS */}
         <section id="trabalhos" className="scroll-mt-16 bg-secondary/60 py-24 md:py-32">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -380,6 +448,7 @@ function Index() {
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-4">
               <h2 className="text-section text-navy">O que os clientes dizem da Nostrink’s.</h2>
+              <p className="mt-5 text-muted-foreground">Quase 10 anos atendendo Porto Belo.</p>
               <p className="mt-8 font-display text-6xl font-extrabold text-navy">
                 {BUSINESS.rating}
                 <span className="text-2xl font-medium text-muted-foreground"> / 5</span>
@@ -407,6 +476,36 @@ function Index() {
                   </footer>
                 </blockquote>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="duvidas" className="mx-auto max-w-7xl px-6 pb-24 md:px-10 md:pb-32">
+          <div className="grid gap-10 border-t border-border pt-12 md:grid-cols-12">
+            <h2 className="text-section text-navy md:col-span-4">Perguntas frequentes</h2>
+            <div className="divide-y divide-border md:col-span-7 md:col-start-6">
+              <details className="pb-6">
+                <summary className="cursor-pointer font-display text-xl font-semibold text-navy">
+                  O orçamento é grátis?
+                </summary>
+                <p className="mt-4 leading-relaxed text-graphite">
+                  Sim, inclusive para serviços mecânicos.
+                </p>
+              </details>
+              <details className="py-6">
+                <summary className="cursor-pointer font-display text-xl font-semibold text-navy">
+                  Vocês buscam e entregam o veículo?
+                </summary>
+                <p className="mt-4 leading-relaxed text-graphite">Sim, sem custo adicional.</p>
+              </details>
+              <details className="py-6">
+                <summary className="cursor-pointer font-display text-xl font-semibold text-navy">
+                  Quanto tempo demora?
+                </summary>
+                <p className="mt-4 leading-relaxed text-graphite">
+                  Avaliamos na hora e combinamos o prazo antes de começar.
+                </p>
+              </details>
             </div>
           </div>
         </section>
@@ -443,6 +542,20 @@ function Index() {
                 </PillLink>
               </div>
             </div>
+            <figure className="md:col-span-2">
+              <img
+                src={fachada}
+                alt="Fachada e entrada da Nostrink’s Lavacar em Porto Belo"
+                width={1600}
+                height={783}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-full"
+              />
+              <figcaption className="mt-3 text-xs text-muted-foreground">
+                Fachada da Nostrink’s Lavacar em Porto Belo.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
