@@ -324,7 +324,7 @@ function Index() {
             </div>
             <div>
               <h2 className="font-display text-3xl font-bold text-navy">Horário de atendimento</h2>
-              {/* CONFIRMAR COM O DONO: ordem de chegada ou hora marcada? */}
+              <p className="mt-5 text-graphite">Atendimento por ordem de chegada.</p>
               <p className="mt-8 leading-relaxed text-graphite">
                 Segunda a sábado: 7h às 12h e 13h às 18h.
               </p>
