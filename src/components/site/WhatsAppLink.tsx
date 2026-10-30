@@ -1,6 +1,7 @@
-import type { ComponentProps, SVGProps } from "react";
+import type { ComponentProps, SVGProps, MouseEvent } from "react";
 import { OriginLink } from "@/components/ui/origin-button";
 import { WHATSAPP_MESSAGES, whatsappUrl, type WhatsAppSource } from "@/lib/business";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -22,8 +23,20 @@ export function WhatsAppLink({
   withFill = true,
   variant = "brand",
   children = "Pedir orçamento no WhatsApp",
+  onClick,
+  onAuxClick,
   ...props
 }: WhatsAppLinkProps) {
+  function handleClick(event: MouseEvent<HTMLAnchorElement>) {
+    onClick?.(event);
+    if (!event.defaultPrevented && event.button === 0) trackWhatsAppClick(source);
+  }
+
+  function handleAuxClick(event: MouseEvent<HTMLAnchorElement>) {
+    onAuxClick?.(event);
+    if (!event.defaultPrevented && event.button === 1) trackWhatsAppClick(source);
+  }
+
   const linkProps = {
     ...props,
     href: whatsappUrl(WHATSAPP_MESSAGES[source]),
@@ -31,6 +44,8 @@ export function WhatsAppLink({
     rel: "noopener noreferrer",
     "data-whatsapp-source": source,
     "data-analytics-event": "whatsapp_click",
+    onClick: handleClick,
+    onAuxClick: handleAuxClick,
   };
   const content = showIcon ? (
     <span className="whatsapp-label">

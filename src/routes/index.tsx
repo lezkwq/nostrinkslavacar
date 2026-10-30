@@ -200,6 +200,13 @@ function Index() {
                 Conhecer os serviços
               </PillLink>
             </div>
+            <a
+              href={MAPS_URL}
+              {...ext}
+              className="mt-3 text-xs font-medium text-navy underline-offset-4 [text-shadow:0_0_2px_rgb(255_255_255_/_0.95)] hover:underline"
+            >
+              {BUSINESS.rating} no Google. {BUSINESS.reviewsCount} avaliações.
+            </a>
           </div>
         </section>
 
@@ -601,8 +608,8 @@ function Index() {
           <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
             <h2 className="text-display max-w-4xl">O que seu veículo precisa hoje, Porto Belo?</h2>
             <p className="mt-6 max-w-lg text-lg opacity-80">
-              Conte para a equipe da Nostrink’s se você precisa de lavação, manutenção ou reparo.
-              Consulte o serviço e combine sua visita à Avenida Governador Celso Ramos, 1868.
+              Clique no botão de WhatsApp, conte o que seu veículo precisa e solicite uma avaliação
+              ou um orçamento à equipe da Nostrink’s.
             </p>
             <div className="mt-10">
               <PillLink whatsappSource="final" />

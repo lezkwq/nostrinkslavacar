@@ -1,5 +1,5 @@
 // Dados da empresa. O número de WhatsApp aparece no material oficial da marca (arte com ícone do WhatsApp).
-// Confirmar nota/avaliações do Google e serviços antes da publicação definitiva.
+// Google Maps conferido em 30/10/2026: nota 4,5 e 40 avaliações, endereço e telefone correspondentes.
 export const WHATSAPP_NUMBER = "5547997067216";
 
 export const BUSINESS = {
