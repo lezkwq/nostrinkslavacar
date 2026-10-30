@@ -11,6 +11,7 @@ import hondaOrla from "@/assets/honda-orla.webp";
 import peugeot from "@/assets/peugeot.webp";
 import volvo from "@/assets/volvo.webp";
 import heroDesktop from "@/assets/hero-desktop-volvo.webp";
+import polimento from "@/assets/polimento.webp";
 
 const TITLE = "Nostrink’s Lavacar | Centro automotivo completo em Porto Belo";
 const DESC =
@@ -217,6 +218,22 @@ function Index() {
                           <li key={item}>{item}</li>
                         ))}
                       </ul>
+                      {s.name === "Lavação e estética" && (
+                        <figure className="mt-6">
+                          <img
+                            src={polimento}
+                            alt="Polimento em execução com politriz na pintura de um carro preto"
+                            width={1448}
+                            height={1086}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-auto w-full"
+                          />
+                          <figcaption className="mt-2 text-xs text-muted-foreground">
+                            Polimento automotivo em execução.
+                          </figcaption>
+                        </figure>
+                      )}
                       <a
                         href={whatsappUrl(serviceMessage(s.name))}
                         {...ext}
