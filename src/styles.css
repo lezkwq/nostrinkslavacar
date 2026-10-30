@@ -65,7 +65,7 @@
   --border: oklch(0.9 0.008 255);
   --input: oklch(0.9 0.008 255);
   --ring: var(--navy);
-  --hero-shade: linear-gradient(180deg, oklch(0.2 0.06 268 / 0.38) 0%, oklch(0.2 0.06 268 / 0.12) 30%, transparent 50%);
+  --hero-shade: linear-gradient(180deg, rgb(13 24 57 / 0.72) 0, rgb(13 24 57 / 0.72) 480px, rgb(13 24 57 / 0.2) 640px, transparent 800px);
 }
 
 @layer base {
@@ -96,6 +96,40 @@
 }
 
 .origin-button-label { display: contents; }
+
+.hero-copy > p,
+.hero-copy blockquote { text-shadow: 0 1px 3px rgb(0 0 0 / 0.45); }
+
+.whatsapp-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  vertical-align: middle;
+}
+.whatsapp-icon { flex: none; width: 1.125rem; height: 1.125rem; }
+.header-whatsapp { min-height: 44px; white-space: nowrap; }
+.header-whatsapp .whatsapp-label { gap: 0.25rem; }
+.header-whatsapp .whatsapp-icon { width: 1rem; height: 1rem; }
+
+.whatsapp-float {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(calc(1rem + env(safe-area-inset-bottom)), calc(1rem + var(--footer-overlap, 0px)));
+  z-index: 30;
+}
+.whatsapp-float-link {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #128c7e;
+  color: #fff;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 0.18);
+}
+.whatsapp-float-link .whatsapp-icon { width: 28px; height: 28px; }
 
 @media (min-width: 1024px) {
   #servicos .services-layout {

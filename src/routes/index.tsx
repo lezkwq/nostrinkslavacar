@@ -1,7 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { OriginLink } from "@/components/ui/origin-button";
 import { Header, Wordmark } from "@/components/site/Header";
-import { BUSINESS, MAPS_URL, ROUTE_URL, serviceMessage, whatsappUrl } from "@/lib/business";
+import { WhatsAppLink } from "@/components/site/WhatsAppLink";
+import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
+import {
+  BUSINESS,
+  MAPS_URL,
+  ROUTE_URL,
+  SERVICE_WHATSAPP_SOURCES,
+  type WhatsAppSource,
+} from "@/lib/business";
 import pintura from "@/assets/pintura.webp";
 import pastilhaUsada from "@/assets/pastilha-usada.webp";
 import freios from "@/assets/freios.webp";
@@ -108,30 +116,37 @@ const REVIEWS = [
   },
 ];
 
+type PillLinkProps = {
+  children?: React.ReactNode;
+  variant?: "brand" | "light" | "navy" | "outline";
+} & (
+  | { href: string; external?: boolean; whatsappSource?: never }
+  | { whatsappSource: WhatsAppSource; href?: never; external?: never }
+);
+
 function PillLink({
   href,
+  whatsappSource,
   children,
   variant = "brand",
   external = true,
-}: {
-  href: string;
-  children: React.ReactNode;
-  variant?: "brand" | "light" | "navy" | "outline";
-  external?: boolean;
-}) {
+}: PillLinkProps) {
   const styles = {
     brand: "bg-brand text-brand-foreground hover:brightness-95",
     light: "bg-on-photo/90 text-navy hover:bg-on-photo",
     navy: "bg-navy text-navy-foreground hover:opacity-90",
     outline: "border border-navy/25 text-navy hover:border-navy",
   }[variant];
+  const className = `inline-flex max-w-full items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 hover:-translate-y-px ${styles}`;
+  if (whatsappSource) {
+    return (
+      <WhatsAppLink source={whatsappSource} variant={variant} className={className}>
+        {children}
+      </WhatsAppLink>
+    );
+  }
   return (
-    <OriginLink
-      variant={variant}
-      href={href}
-      {...(external ? ext : {})}
-      className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 hover:-translate-y-px ${styles}`}
-    >
+    <OriginLink variant={variant} href={href} {...(external ? ext : {})} className={className}>
       {children}
     </OriginLink>
   );
@@ -159,7 +174,7 @@ function Index() {
             />
           </picture>
           <div className="absolute inset-0 bg-hero-shade" aria-hidden />
-          <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[10vh]">
+          <div className="hero-copy relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[10vh]">
             <h1 className="text-display animate-rise">
               Da lavação à mecânica.
               <br />
@@ -169,14 +184,14 @@ function Index() {
               Centro automotivo completo na Avenida Governador Celso Ramos. Estética, pintura,
               estofados, elétrica e vidros no mesmo endereço.
             </p>
-            <blockquote className="mt-5 max-w-xl text-sm leading-relaxed opacity-90">
+            <blockquote className="mt-5 max-w-xl text-sm leading-relaxed">
               <p>
                 “Eis que tenho posto diante de ti uma porta aberta, a qual ninguém pode fechar.”
               </p>
               <cite className="mt-1 block text-xs not-italic">Apocalipse 3:8</cite>
             </blockquote>
             <div className="animate-rise mt-6 flex flex-col gap-3 [animation-delay:220ms] sm:flex-row">
-              <PillLink href={whatsappUrl()}>Consultar meu serviço</PillLink>
+              <PillLink whatsappSource="hero" />
               <PillLink href="#servicos" variant="light" external={false}>
                 Conhecer os serviços
               </PillLink>
@@ -206,7 +221,7 @@ function Index() {
             <div className="services-content">
               <div className="services-intro">
                 <h2 className="text-section max-w-xl text-navy">
-                  Um centro automotivo completo em Porto Belo.
+                  Tudo o que fazemos na Nostrink’s.
                 </h2>
                 <p className="mt-5 max-w-md text-muted-foreground">
                   Da limpeza aos reparos, veja o que você pode resolver na Nostrink’s. Fale com a
@@ -247,13 +262,27 @@ function Index() {
                           </figcaption>
                         </figure>
                       )}
-                      <a
-                        href={whatsappUrl(serviceMessage(s.name))}
-                        {...ext}
-                        className="mt-4 inline-block text-sm font-medium text-navy underline decoration-brand decoration-2 underline-offset-[6px] hover:decoration-navy"
+                      {s.name === "Mecânica e elétrica" && (
+                        <div className="mt-6 border-l-2 border-brand py-1 pl-4">
+                          <h4 className="font-display text-xl font-bold text-navy">
+                            Troca de óleo para o seu veículo.
+                          </h4>
+                          <p className="mt-2 text-sm leading-relaxed text-graphite">
+                            Fale com nossa equipe e solicite um orçamento para troca de óleo.
+                          </p>
+                          <WhatsAppLink
+                            source="troca_oleo"
+                            className="mt-3 inline-flex max-w-full items-center justify-center rounded-full bg-brand px-4 py-3 text-sm font-medium text-brand-foreground"
+                          />
+                        </div>
+                      )}
+                      <WhatsAppLink
+                        source={SERVICE_WHATSAPP_SOURCES[s.name] ?? "hero"}
+                        withFill={false}
+                        className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-navy underline decoration-brand decoration-2 underline-offset-[6px] hover:decoration-navy"
                       >
-                        Consultar este grupo
-                      </a>
+                        Orçamento no WhatsApp
+                      </WhatsAppLink>
                     </div>
                   </li>
                 ))}
@@ -299,7 +328,7 @@ function Index() {
               <h2 className="font-display text-3xl font-bold text-navy">Quanto custa</h2>
               <dl className="mt-8 divide-y divide-border">
                 <div className="pb-6">
-                  <dt className="text-lg text-graphite">Lavagem rápida (ducha)</dt>
+                  <dt className="text-lg text-graphite">Ducha rápida</dt>
                   <dd className="mt-2 font-display text-2xl font-semibold text-navy">
                     A partir de R$ 10
                   </dd>
@@ -312,7 +341,7 @@ function Index() {
                   </dd>
                 </div>
                 <div className="py-6">
-                  <dt className="text-lg text-graphite">Detalhada / polimento</dt>
+                  <dt className="text-lg text-graphite">Lavagem detalhada</dt>
                   <dd className="mt-2 font-display text-2xl font-semibold text-navy">
                     A partir de R$ 300
                   </dd>
@@ -324,24 +353,25 @@ function Index() {
             </div>
             <div>
               <h2 className="font-display text-3xl font-bold text-navy">Horário de atendimento</h2>
-              <p className="mt-5 text-graphite">Atendimento por ordem de chegada.</p>
+              {/* CONFIRMAR COM O DONO: ordem de chegada ou hora marcada? */}
               <p className="mt-8 leading-relaxed text-graphite">
-                Segunda a sábado: 7h às 12h e 13h às 18h.
+                Segunda a sábado: das 7h às 12h e das 13h às 18h.
               </p>
               <p className="mt-3 leading-relaxed text-graphite">
-                Domingo:{" "}
-                <a
-                  href={MAPS_URL}
-                  {...ext}
+                Atendimento variável aos domingos.{" "}
+                <WhatsAppLink
+                  source="localizacao"
+                  showIcon={false}
                   className="underline decoration-brand decoration-2 underline-offset-4"
                 >
-                  Funcionamento variável, confira o status no Google antes de vir.
-                </a>
+                  Confirme pelo WhatsApp antes de vir.
+                </WhatsAppLink>
               </p>
               <div className="mt-8 border-t border-border pt-6">
                 <h3 className="text-2xl font-bold text-navy">Garantia</h3>
                 <p className="mt-3 leading-relaxed text-graphite">
-                  Garantia de 6 meses a 1 ano, conforme o serviço realizado.
+                  Alguns serviços contam com garantia. Consulte as condições e os prazos com nossa
+                  equipe.
                 </p>
               </div>
               <div className="mt-8 border-t border-border pt-6">
@@ -399,8 +429,9 @@ function Index() {
                 caption="Volvo XC90 no pátio"
               />
             </div>
-            <div className="mt-12">
-              <PillLink href={BUSINESS.instagram} variant="navy">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <PillLink whatsappSource="galeria" />
+              <PillLink href={BUSINESS.instagram} variant="outline">
                 Ver mais trabalhos no Instagram
               </PillLink>
             </div>
@@ -434,9 +465,7 @@ function Index() {
             />
           </div>
           <div className="mt-8">
-            <PillLink href={whatsappUrl(serviceMessage("lavagem de moto"))}>
-              Consultar lavagem da minha moto
-            </PillLink>
+            <PillLink whatsappSource="motos" />
           </div>
         </section>
 
@@ -448,7 +477,9 @@ function Index() {
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-4">
               <h2 className="text-section text-navy">O que os clientes dizem da Nostrink’s.</h2>
-              <p className="mt-5 text-muted-foreground">Quase 10 anos atendendo Porto Belo.</p>
+              <p className="mt-5 text-muted-foreground">
+                Quase 10 anos de experiência no setor automotivo.
+              </p>
               <p className="mt-8 font-display text-6xl font-extrabold text-navy">
                 {BUSINESS.rating}
                 <span className="text-2xl font-medium text-muted-foreground"> / 5</span>
@@ -486,24 +517,28 @@ function Index() {
             <div className="divide-y divide-border md:col-span-7 md:col-start-6">
               <details className="pb-6">
                 <summary className="cursor-pointer font-display text-xl font-semibold text-navy">
-                  O orçamento é grátis?
+                  O orçamento de mecânica é gratuito?
                 </summary>
                 <p className="mt-4 leading-relaxed text-graphite">
-                  Sim, inclusive para serviços mecânicos.
+                  Sim, o orçamento de mecânica é gratuito.
                 </p>
               </details>
               <details className="py-6">
                 <summary className="cursor-pointer font-display text-xl font-semibold text-navy">
                   Vocês buscam e entregam o veículo?
                 </summary>
-                <p className="mt-4 leading-relaxed text-graphite">Sim, sem custo adicional.</p>
+                <p className="mt-4 leading-relaxed text-graphite">
+                  Sim, oferecemos serviço de busca e entrega sem custo. Consulte a disponibilidade
+                  para sua localização.
+                </p>
               </details>
               <details className="py-6">
                 <summary className="cursor-pointer font-display text-xl font-semibold text-navy">
-                  Quanto tempo demora?
+                  Quanto tempo demora o serviço?
                 </summary>
                 <p className="mt-4 leading-relaxed text-graphite">
-                  Avaliamos na hora e combinamos o prazo antes de começar.
+                  O prazo depende do serviço e das condições do veículo. Entre em contato para
+                  consultar o tempo estimado.
                 </p>
               </details>
             </div>
@@ -533,13 +568,11 @@ function Index() {
                   Telefone: {BUSINESS.phoneDisplay}
                 </a>
               </address>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 xl:flex-row">
                 <PillLink href={ROUTE_URL} variant="navy">
                   Ver rota até a Nostrink’s
                 </PillLink>
-                <PillLink href={whatsappUrl()} variant="outline">
-                  Falar com a Nostrink’s
-                </PillLink>
+                <PillLink whatsappSource="localizacao" />
               </div>
             </div>
             <figure className="md:col-span-2">
@@ -568,13 +601,13 @@ function Index() {
               Consulte o serviço e combine sua visita à Avenida Governador Celso Ramos, 1868.
             </p>
             <div className="mt-10">
-              <PillLink href={whatsappUrl()}>Combinar minha visita</PillLink>
+              <PillLink whatsappSource="final" />
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-navy pb-24 text-navy-foreground md:pb-0">
+      <footer data-site-footer className="bg-navy pb-24 text-navy-foreground md:pb-0">
         <div className="mx-auto grid max-w-7xl gap-8 border-t border-navy-foreground/15 px-6 py-12 text-sm md:grid-cols-4 md:px-10">
           <Wordmark className="text-xl" />
           <p className="opacity-75">
@@ -613,15 +646,7 @@ function Index() {
         </div>
       </footer>
 
-      {/* WhatsApp flutuante no mobile */}
-      <a
-        href={whatsappUrl()}
-        {...ext}
-        className="fixed bottom-4 right-4 z-30 rounded-full bg-brand px-5 py-3 text-sm font-medium text-brand-foreground md:hidden"
-        aria-label="Conversar pelo WhatsApp"
-      >
-        WhatsApp
-      </a>
+      <FloatingWhatsApp />
     </div>
   );
 }
