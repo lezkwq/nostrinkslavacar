@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ImageGallery from "@/components/ui/image-gallery";
 import { Header, Wordmark } from "@/components/site/Header";
 import { BUSINESS, MAPS_URL, ROUTE_URL, serviceMessage, whatsappUrl } from "@/lib/business";
 import pintura from "@/assets/pintura.webp";
@@ -221,7 +220,7 @@ function Index() {
                       </ul>
                       {s.name === "Lavação e estética" && (
                         <figure className="service-photo mt-6">
-                          <div className="overflow-hidden rounded-lg">
+                          <div className="overflow-hidden">
                             <img
                               src={polimento}
                               alt="Polimento em execução com politriz na pintura de um carro preto"
@@ -250,7 +249,7 @@ function Index() {
               </ol>
             </div>
             <figure className="service-photo lg:sticky lg:top-24 lg:self-start">
-              <div className="overflow-hidden rounded-lg">
+              <div className="overflow-hidden">
                 <img
                   src={pintura}
                   alt="Traseira de hatch verde com papel e fita de proteção durante pintura"
@@ -280,41 +279,38 @@ function Index() {
                 Pintura, manutenção e acabamento na Nostrink’s Lavacar, em Porto Belo.
               </p>
             </div>
-            <ImageGallery
-              className="mt-14"
-              images={[
-                {
-                  src: pintura,
-                  alt: "Hatch verde protegido com papel e fita durante pintura",
-                  caption: "Pintura e preparação na oficina",
-                },
-                {
-                  src: pastilhaUsada,
-                  alt: "Pastilha de freio com desgaste e fissuras na mão",
-                  caption: "Detalhe da pastilha desgastada",
-                },
-                {
-                  src: freios,
-                  alt: "Pastilha nova apresentada junto ao disco de freio",
-                  caption: "Pastilha nova junto ao conjunto de freio",
-                },
-                {
-                  src: insulfilm,
-                  alt: "Comparação entre película deteriorada e área limpa no vidro lateral",
-                  caption: "Insulfilm: comparação no vidro lateral",
-                },
-                {
-                  src: peugeot,
-                  alt: "Peugeot 208 azul no pátio da Nostrink’s",
-                  caption: "Peugeot 208 no pátio",
-                },
-                {
-                  src: volvo,
-                  alt: "Volvo XC90 branco no pátio da Nostrink’s",
-                  caption: "Volvo XC90 no pátio",
-                },
-              ]}
-            />
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <Photo
+                src={pintura}
+                alt="Hatch verde protegido com papel e fita durante pintura"
+                caption="Pintura e preparação na oficina"
+              />
+              <Photo
+                src={pastilhaUsada}
+                alt="Pastilha de freio com desgaste e fissuras na mão"
+                caption="Detalhe da pastilha desgastada"
+              />
+              <Photo
+                src={freios}
+                alt="Pastilha nova apresentada junto ao disco de freio"
+                caption="Pastilha nova junto ao conjunto de freio"
+              />
+              <Photo
+                src={insulfilm}
+                alt="Comparação entre película deteriorada e área limpa no vidro lateral"
+                caption="Insulfilm: comparação no vidro lateral"
+              />
+              <Photo
+                src={peugeot}
+                alt="Peugeot 208 azul no pátio da Nostrink’s"
+                caption="Peugeot 208 no pátio"
+              />
+              <Photo
+                src={volvo}
+                alt="Volvo XC90 branco no pátio da Nostrink’s"
+                caption="Volvo XC90 no pátio"
+              />
+            </div>
             <div className="mt-12">
               <PillLink href={BUSINESS.instagram} variant="navy">
                 Ver mais trabalhos no Instagram
@@ -332,26 +328,23 @@ function Index() {
             Da Kawasaki à Honda, sua moto também tem lugar na Nostrink’s. Consulte o serviço de
             lavagem em Porto Belo.
           </p>
-          <ImageGallery
-            className="mt-12"
-            images={[
-              {
-                src: kawasakiPatio,
-                alt: "Kawasaki verde e preta no pátio da oficina",
-                caption: "Kawasaki no pátio da Nostrink’s",
-              },
-              {
-                src: kawasakiOrla,
-                alt: "Kawasaki verde e preta na orla com o mar ao fundo",
-                caption: "Kawasaki na orla",
-              },
-              {
-                src: hondaOrla,
-                alt: "Honda vermelha na orla com o mar e as montanhas ao fundo",
-                caption: "Honda na orla",
-              },
-            ]}
-          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            <Photo
+              src={kawasakiPatio}
+              alt="Kawasaki verde e preta no pátio da oficina"
+              caption="Kawasaki no pátio da Nostrink’s"
+            />
+            <Photo
+              src={kawasakiOrla}
+              alt="Kawasaki verde e preta na orla com o mar ao fundo"
+              caption="Kawasaki na orla"
+            />
+            <Photo
+              src={hondaOrla}
+              alt="Honda vermelha na orla com o mar e as montanhas ao fundo"
+              caption="Honda na orla"
+            />
+          </div>
           <div className="mt-8">
             <PillLink href={whatsappUrl(serviceMessage("lavagem de moto"))}>
               Consultar lavagem da minha moto
@@ -497,5 +490,38 @@ function Index() {
         WhatsApp
       </a>
     </div>
+  );
+}
+
+function Photo({
+  src,
+  alt,
+  caption,
+  className = "",
+  ratio = "aspect-[4/5]",
+  pos = "object-center",
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  className?: string;
+  ratio?: string;
+  pos?: string;
+}) {
+  return (
+    <figure className={`group overflow-hidden ${className}`}>
+      <div className={`overflow-hidden ${ratio}`}>
+        <img
+          src={src}
+          alt={alt}
+          width={1200}
+          height={1500}
+          loading="lazy"
+          decoding="async"
+          className={`h-full w-full object-cover ${pos} transition-transform duration-700 group-hover:scale-[1.02]`}
+        />
+      </div>
+      <figcaption className="mt-2 text-xs text-muted-foreground">{caption}</figcaption>
+    </figure>
   );
 }
