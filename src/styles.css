@@ -65,7 +65,7 @@
   --border: oklch(0.9 0.008 255);
   --input: oklch(0.9 0.008 255);
   --ring: var(--navy);
-  --hero-shade: linear-gradient(180deg, rgb(13 24 57 / 0.72) 0, rgb(13 24 57 / 0.72) 480px, rgb(13 24 57 / 0.2) 640px, transparent 800px);
+  --hero-shade: linear-gradient(180deg, oklch(0.2 0.06 268 / 0.38) 0%, oklch(0.2 0.06 268 / 0.12) 30%, transparent 50%);
 }
 
 @layer base {
@@ -97,8 +97,15 @@
 
 .origin-button-label { display: contents; }
 
-.hero-copy > p,
 .hero-copy blockquote { text-shadow: 0 1px 3px rgb(0 0 0 / 0.45); }
+
+.verse-highlight {
+  background: rgb(13 24 57 / 0.7);
+  box-shadow: 0.3em 0 0 rgb(13 24 57 / 0.7), -0.3em 0 0 rgb(13 24 57 / 0.7);
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 
 .whatsapp-label {
   display: inline-flex;

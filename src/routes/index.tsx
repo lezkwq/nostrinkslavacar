@@ -186,9 +186,13 @@ function Index() {
             </p>
             <blockquote className="mt-5 max-w-xl text-sm leading-relaxed">
               <p>
-                “Eis que tenho posto diante de ti uma porta aberta, a qual ninguém pode fechar.”
+                <span className="verse-highlight">
+                  “Eis que tenho posto diante de ti uma porta aberta, a qual ninguém pode fechar.”
+                </span>
               </p>
-              <cite className="mt-1 block text-xs not-italic">Apocalipse 3:8</cite>
+              <cite className="mt-1 block text-xs not-italic">
+                <span className="verse-highlight">Apocalipse 3:8</span>
+              </cite>
             </blockquote>
             <div className="animate-rise mt-6 flex flex-col gap-3 [animation-delay:220ms] sm:flex-row">
               <PillLink whatsappSource="hero" />
