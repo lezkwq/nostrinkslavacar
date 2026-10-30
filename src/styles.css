@@ -97,20 +97,6 @@
 
 .origin-button-label { display: contents; }
 
-.hero-verse {
-  position: relative;
-  isolation: isolate;
-  color: var(--navy);
-}
-.hero-verse::before {
-  content: "";
-  position: absolute;
-  inset: -6px -12px;
-  z-index: -1;
-  border-radius: 6px;
-  background: #fff;
-}
-
 .whatsapp-label {
   display: inline-flex;
   align-items: center;

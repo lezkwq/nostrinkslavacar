@@ -184,12 +184,6 @@ function Index() {
               Centro automotivo completo na Avenida Governador Celso Ramos. Estética, pintura,
               estofados, elétrica e vidros no mesmo endereço.
             </p>
-            <blockquote className="hero-verse mt-5 max-w-xl text-sm leading-relaxed">
-              <p>
-                “Eis que tenho posto diante de ti uma porta aberta, a qual ninguém pode fechar.”
-              </p>
-              <cite className="mt-1 block text-xs not-italic">Apocalipse 3:8</cite>
-            </blockquote>
             <div className="animate-rise mt-6 flex flex-col gap-3 [animation-delay:220ms] sm:flex-row">
               <PillLink whatsappSource="hero" />
               <PillLink href="#servicos" variant="light" external={false}>
