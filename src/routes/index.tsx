@@ -10,6 +10,7 @@ import kawasakiPatio from "@/assets/kawasaki-patio.webp";
 import hondaOrla from "@/assets/honda-orla.webp";
 import peugeot from "@/assets/peugeot.webp";
 import volvo from "@/assets/volvo.webp";
+import heroDesktop from "@/assets/hero-desktop-volvo.webp";
 
 const TITLE = "Nostrink’s Lavacar | Centro automotivo completo em Porto Belo";
 const DESC =
@@ -140,16 +141,19 @@ function Index() {
         {/* HERO */}
         <section
           aria-label="Apresentação"
-          className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-navy md:h-[92vh]"
+          className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-navy"
         >
-          <img
-            src={volvo}
-            alt="Volvo branco no pátio da Nostrink’s Lavacar em Porto Belo"
-            fetchPriority="high"
-            width={1200}
-            height={1500}
-            className="absolute inset-0 h-full w-full object-cover object-[50%_60%]"
-          />
+          <picture>
+            <source media="(min-width: 768px)" srcSet={heroDesktop} />
+            <img
+              src={volvo}
+              alt="Volvo branco no pátio da Nostrink’s Lavacar em Porto Belo"
+              fetchPriority="high"
+              width={1200}
+              height={1500}
+              className="absolute inset-0 h-full w-full object-cover object-[50%_60%] md:object-center"
+            />
+          </picture>
           <div className="absolute inset-0 bg-hero-shade" aria-hidden />
           <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center text-on-photo md:pt-[10vh]">
             <h1 className="text-display animate-rise">
