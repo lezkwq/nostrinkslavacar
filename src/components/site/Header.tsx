@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { OriginLink } from "@/components/ui/origin-button";
 import { whatsappUrl } from "@/lib/business";
 
 const NAV = [
@@ -57,14 +58,14 @@ export function Header() {
           <Wordmark />
         </a>
         <div className="flex items-center justify-end gap-2">
-          <a
+          <OriginLink
             href={whatsappUrl()}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-brand px-4 py-2 text-sm font-medium text-brand-foreground transition-transform hover:-translate-y-px"
           >
             Consultar
-          </a>
+          </OriginLink>
           <button
             type="button"
             className="rounded-full px-3 py-2 text-sm md:hidden"

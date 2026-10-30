@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OriginLink } from "@/components/ui/origin-button";
 import { Header, Wordmark } from "@/components/site/Header";
 import { BUSINESS, MAPS_URL, ROUTE_URL, serviceMessage, whatsappUrl } from "@/lib/business";
 import pintura from "@/assets/pintura.webp";
@@ -124,13 +125,14 @@ function PillLink({
     outline: "border border-navy/25 text-navy hover:border-navy",
   }[variant];
   return (
-    <a
+    <OriginLink
+      variant={variant}
       href={href}
       {...(external ? ext : {})}
       className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 hover:-translate-y-px ${styles}`}
     >
       {children}
-    </a>
+    </OriginLink>
   );
 }
 
@@ -193,16 +195,18 @@ function Index() {
 
         {/* SERVIÇOS */}
         <section id="servicos" className="mx-auto max-w-7xl scroll-mt-20 px-6 pb-28 md:px-10">
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <h2 className="text-section max-w-xl text-navy">
-                Um centro automotivo completo em Porto Belo.
-              </h2>
-              <p className="mt-5 max-w-md text-muted-foreground">
-                Da limpeza aos reparos, veja o que você pode resolver na Nostrink’s. Fale com a
-                equipe sobre o serviço e a disponibilidade.
-              </p>
-              <ol className="mt-12 border-t border-border">
+          <div className="services-layout grid gap-14 lg:grid-cols-2 lg:gap-20">
+            <div className="services-content">
+              <div className="services-intro">
+                <h2 className="text-section max-w-xl text-navy">
+                  Um centro automotivo completo em Porto Belo.
+                </h2>
+                <p className="mt-5 max-w-md text-muted-foreground">
+                  Da limpeza aos reparos, veja o que você pode resolver na Nostrink’s. Fale com a
+                  equipe sobre o serviço e a disponibilidade.
+                </p>
+              </div>
+              <ol className="services-list mt-12 border-t border-border">
                 {SERVICES.map((s, i) => (
                   <li
                     key={s.name}
@@ -248,7 +252,7 @@ function Index() {
                 ))}
               </ol>
             </div>
-            <figure className="service-photo lg:sticky lg:top-24 lg:self-start">
+            <figure className="services-main-photo service-photo lg:sticky lg:top-24 lg:self-start">
               <div className="overflow-hidden">
                 <img
                   src={pintura}
