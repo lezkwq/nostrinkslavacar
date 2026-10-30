@@ -184,15 +184,11 @@ function Index() {
               Centro automotivo completo na Avenida Governador Celso Ramos. Estética, pintura,
               estofados, elétrica e vidros no mesmo endereço.
             </p>
-            <blockquote className="mt-5 max-w-xl text-sm leading-relaxed">
+            <blockquote className="hero-verse mt-5 max-w-xl text-sm leading-relaxed">
               <p>
-                <span className="verse-highlight">
-                  “Eis que tenho posto diante de ti uma porta aberta, a qual ninguém pode fechar.”
-                </span>
+                “Eis que tenho posto diante de ti uma porta aberta, a qual ninguém pode fechar.”
               </p>
-              <cite className="mt-1 block text-xs not-italic">
-                <span className="verse-highlight">Apocalipse 3:8</span>
-              </cite>
+              <cite className="mt-1 block text-xs not-italic">Apocalipse 3:8</cite>
             </blockquote>
             <div className="animate-rise mt-6 flex flex-col gap-3 [animation-delay:220ms] sm:flex-row">
               <PillLink whatsappSource="hero" />
@@ -203,9 +199,20 @@ function Index() {
             <a
               href={MAPS_URL}
               {...ext}
-              className="mt-3 text-xs font-medium text-navy underline-offset-4 [text-shadow:0_0_2px_rgb(255_255_255_/_0.95)] hover:underline"
+              className="hero-rating mt-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-navy underline-offset-4 hover:underline"
             >
-              {BUSINESS.rating} no Google. {BUSINESS.reviewsCount} avaliações.
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+                className="h-3.5 w-3.5 shrink-0 text-brand"
+              >
+                <path d="m12 2 2.81 6.63 7.19.61-5.46 4.73L18.18 21 12 17.27 5.82 21l1.64-7.03L2 9.24l7.19-.61L12 2Z" />
+              </svg>
+              <span>
+                {BUSINESS.rating} no Google. {BUSINESS.reviewsCount} avaliações.
+              </span>
             </a>
           </div>
         </section>
